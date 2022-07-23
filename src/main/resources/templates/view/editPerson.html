@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link rel="stylesheet" href="/css/newPerson.css">
+</head>
+<body>
+    <h1>Person editing:</h1>
+    <form
+          action="#"
+          th:action="@{/api/v1/person/update/{id}(id=${person.id})}"
+          th:object="${person}"
+          method="post">
+        <label for="firstName">First Name</label>
+        <br>
+        <input name="firstName" id="firstName" type="text" th:field="*{firstName}"/>
+        <br>
+        <label for="lastName">Last Name</label>
+        <br>
+        <input name="lastName" type="text" id="lastName" th:field="*{lastName}">
+        <br>
+        <label for="email">Email</label>
+        <input name="email" type="text" id="email" th:field="*{email}">
+        <input type="submit" value="Update"/>
+    </form>
+    <br>
+    <form action="#"
+          th:action="@{/api/v1/person/delete/{id}(id=${person.id})}"
+          th:object="${person}"
+            method="post">
+        <input type="submit" value="Delete"/>
+    </form>
+
+
+</body>
+</html>

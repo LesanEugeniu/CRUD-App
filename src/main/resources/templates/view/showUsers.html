@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link th:href="@{/css/allPerson.css}" rel="stylesheet"/>
+</head>
+<body>
+<h1>Page with all persones:</h1>
+<a th:href="@{/api/v1/person/register}">Register new person :)</a>
+<div th:if="${not #lists.isEmpty(persons)}">
+    <th:block th:each="person: ${persons}">
+        <p th:text="'First Name: ' + ${person.firstName}">...</p>
+        <p th:text="'Last Name: ' + ${person.lastName}">...</p>
+        <p th:text="'Email: ' + ${person.email}">...</p>
+        <br>
+    </th:block>
+
+    <h1>Edit user, place id:</h1>
+    <form action="#"
+    th:action="@{/api/v1/person/id/sender}"
+    method="get">
+        <input class="number_input" min="1" value="1" type="number" name="personId">
+        <input class="submit_input" type="submit">
+    </form>
+</div>
+</body>
+</html>
