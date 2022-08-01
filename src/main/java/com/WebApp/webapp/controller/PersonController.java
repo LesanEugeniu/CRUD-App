@@ -5,8 +5,9 @@ import com.WebApp.webapp.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
+import javax.validation.Valid;
 import java.time.LocalDate;
 
 @Controller
@@ -32,13 +33,14 @@ public class PersonController {
     }
 
     @PostMapping(path = "/new")
-    public String registerNewPerson( @ModelAttribute(value = "person") Person person,
-    Model model){
-        System.out.println(person);
-        person.setDate(LocalDate.of(2003,12,7));
-        personService.addNewPerson(person);
-        model.addAttribute("persons", personService.getPersons());
-        return "redirect:/api/v1/person";
+    public String registerNewPerson(@Valid @ModelAttribute(value = "person") Person person,
+                                     BindingResult br){
+        if (br.hasErrors()){
+            return "/view/newPerson";
+        }
+            person.setDate(LocalDate.of(2003, 12, 7));
+            personService.addNewPerson(person);
+            return "redirect:/api/v1/person";
     }
 
     @GetMapping(path = "/edit/{personId}")
@@ -55,11 +57,17 @@ public class PersonController {
 
     @PostMapping(path = "/update/{personId}")
     public String updatePerson(@PathVariable("personId") Long personId,
-                               @RequestParam(required = false) String firstName,
-                               @RequestParam(required = false) String lastName,
-                               @RequestParam(required = false) String email){
-        personService.updatePerson(personId, firstName, lastName, email);
-        return "redirect:/api/v1/person";
+                               @Valid @ModelAttribute("person") Person person,
+                               BindingResult br){
+        if(br.hasErrors()){
+            return "/view/editPerson";
+        }
+
+            String firstName = person.getFirstName();
+            String lastName = person.getLastName();
+            String email = person.getEmail();
+            personService.updatePerson(personId, firstName, lastName, email);
+            return "redirect:/api/v1/person";
     }
 
     @PostMapping(path = "/delete/{personId}")

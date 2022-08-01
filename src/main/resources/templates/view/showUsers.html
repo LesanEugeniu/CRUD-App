@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>About</title>
-    <link th:href="@{/css/allPerson.css}" rel="stylesheet"/>
+    <link href="/css/allPerson.css" rel="stylesheet"/>
 </head>
 <body>
 <h1>Page with all persones:</h1>
@@ -15,7 +15,7 @@
         <p th:text="'Email: ' + ${person.email}">...</p>
         <br>
     </th:block>
-
+    
     <h1>Edit user, place id:</h1>
     <form action="#"
     th:action="@{/api/v1/person/id/sender}"

@@ -15,13 +15,16 @@
         <label for="firstName">First Name</label>
         <br>
         <input name="firstName" id="firstName" type="text" th:field="*{firstName}"/>
+        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
         <br>
         <label for="lastName">Last Name</label>
         <br>
         <input name="lastName" type="text" id="lastName" th:field="*{lastName}">
+        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
         <br>
         <label for="email">Email</label>
         <input name="email" type="text" id="email" th:field="*{email}">
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
         <input type="submit" value="Update"/>
     </form>
     <br>
@@ -31,7 +34,5 @@
             method="post">
         <input type="submit" value="Delete"/>
     </form>
-
-
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.WebApp.webapp.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -18,10 +19,20 @@ public class Person {
             generator = "person_sequence"
     )
     private Long id;
+
+    @Size(min = 4, max = 30, message ="required beetwen 4 and 30")
+    @NotEmpty(message = "First Name cannot be empty")
     private String firstName;
+
+    @Size(min = 4, max = 30, message ="required beetwen 4 and 30")
+    @NotEmpty(message = "Last Name cannot be empty")
     private String lastName;
+
+    @Email(message = "Email is not valid")
+    @NotEmpty(message = "Email cannot be empty")
     private String email;
     private LocalDate date;
+    @Min(value = 0, message = "Minimum age is 0")
     @Transient
     private Integer age;
 
