@@ -138,9 +138,13 @@ input {
 </div>
 
 <div th:each="task: ${listOfTasks}">
-    <p th:text="'Id: ' + ${task.Id}">Task: Id</p>
+<!--    <p th:text="'Id: ' + ${task.Id}">Task: Id</p>-->
     <p th:text="'Task: ' + ${task.task}">Task: task</p>
-    <a th:href="@{/someIdeas/delete/${task.Id}}">Delete</a>
+    <form action="#"
+            method="post"
+          th:action="@{/someIdeas/delete/{id}(id=${task.Id})}">
+        <input type="submit" value="Delete"/>
+    </form>
 </div>
 </body>
 </html>

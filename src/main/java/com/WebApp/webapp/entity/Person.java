@@ -1,5 +1,7 @@
 package com.WebApp.webapp.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
@@ -31,6 +33,7 @@ public class Person {
     @Email(message = "Email is not valid")
     @NotEmpty(message = "Email cannot be empty")
     private String email;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     @Min(value = 0, message = "Minimum age is 0")
     @Transient

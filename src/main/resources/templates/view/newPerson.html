@@ -20,8 +20,8 @@
         <input type="text" id="email" th:field="*{email}"/>
         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
         <br>
-<!--        <label for="date">Date: </label>-->
-<!--        <input type="date" id="date" th:field="*{date}"/>-->
+        <label for="date">Date: </label>
+        <input type="date" id="date" th:field="*{date}"/>
         <br>
         <input type="submit" value="Submit"/>
 <!--        <button type="submit">Submit Button</button>-->

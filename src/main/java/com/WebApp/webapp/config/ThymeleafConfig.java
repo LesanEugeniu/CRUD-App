@@ -1,14 +1,14 @@
-package com.WebApp.webapp.config;
-
-import org.apache.catalina.core.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.ViewResolver;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.spring5.view.ThymeleafViewResolver;
-import org.thymeleaf.templatemode.TemplateMode;
-
-public class ThymeleafConfig {
+//package com.WebApp.webapp.config;
+//
+//import org.apache.catalina.core.ApplicationContext;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.web.servlet.ViewResolver;
+//import org.thymeleaf.spring5.SpringTemplateEngine;
+//import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+//import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+//import org.thymeleaf.templatemode.TemplateMode;
+//
+//public class ThymeleafConfig {
 //    private ApplicationContext applicationContext;
 //
 //    @Bean
@@ -51,6 +51,6 @@ public class ThymeleafConfig {
 //        templateEngine.setEnableSpringELCompiler(true);
 //        return templateEngine;
 //    }
-
-
-}
+//
+//
+//}

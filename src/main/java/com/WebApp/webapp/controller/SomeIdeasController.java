@@ -34,7 +34,7 @@ public class SomeIdeasController {
     }
 
     @PostMapping(path = "/delete/{id}")
-    public String toDoListDelete(@RequestParam("id") Long id){
+    public String toDoListDelete(@PathVariable("id") Long id){
         taskService.deleteTask(id);
         return "redirect:/someIdeas/todoapp";
     }
